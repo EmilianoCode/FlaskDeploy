@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PODRIDA RAILWAY</title>
+    <script src= https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js charset="utf-8"></script> 
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){});
+
+        const socket = io();
+
+        socket.on("msg", function(data){
+            document.getElementById("outputmsg").append(data);
+        });
+        
+        function env(){
+            let inputmsg = document.getElementById("inputmsg").value
+            socket.emit("saludo", inputmsg);
+        }
+    </script>
+
+    <div>
+        <input type="text" id="inputmsg">
+        <button onclick="env()">enviar</button>
+        <p id="outputmsg"></p>
+    </div>
+
+</body>
+</html>
